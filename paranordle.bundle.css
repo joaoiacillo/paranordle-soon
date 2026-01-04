@@ -1,0 +1,152 @@
+/* src/client/css/bootstrap.css */
+[data-bs-theme=dark] {
+  --bs-body-bg: #1f1f1f;
+}
+.list-group {
+  --bs-list-group-action-color: #ffffff;
+}
+.offcanvas.offcanvas-bottom {
+  height: unset;
+  margin: 0 8px;
+  border-radius: 12px 12px 0 0;
+}
+body.performance-mode .offcanvas.offcanvas-bottom {
+  transition: none !important;
+}
+.modal.fade .modal-dialog {
+  transition: transform 0.2s ease-in-out, filter 0.15s ease-in-out;
+  filter: blur(4px);
+  transform: scale(0.98);
+}
+.modal.show .modal-dialog {
+  filter: blur(0);
+  transform: scale(1);
+}
+body.performance-mode .modal.fade .modal-dialog {
+  transition: none;
+  filter: none;
+  transform: none;
+}
+.modal-content {
+  background: black;
+}
+.list-group-item-action {
+  cursor: pointer;
+}
+
+/* src/client/css/global.css */
+body {
+  color: white;
+  background: #111111 url(/public/imgs/bg-pattern.png) repeat center center fixed;
+  font-family:
+    "Special Elite",
+    system-ui,
+    sans-serif;
+  padding-bottom: 140px;
+}
+header {
+  background: #111111 url(/public/imgs/bg-pattern.png) repeat center center fixed;
+}
+img[loading=lazy] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* src/client/css/animations.css */
+.animate {
+  --animation-name: animateFadeInSlide;
+  --animation-slide-initial-y: 10px;
+  animation: var(--animation-name) 0.4s ease-out;
+}
+.animate-fade-in-bottom {
+  --animation-slide-initial-y: -10px;
+}
+@keyframes animateFadeInSlide {
+  from {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(var(--animation-slide-initial-y));
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
+  }
+}
+
+/* src/client/css/header.css */
+#navbar-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  place-items: center;
+}
+@media screen and (max-width: 992px) {
+  #navbar-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+#main-logo {
+  margin-top: -14.5px;
+}
+
+/* src/client/css/guess.css */
+#guess-input-wrapper {
+  min-width: 400px;
+}
+@media screen and (max-width: 992px) {
+  #guess-input-wrapper {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background-color: #1f1f1f;
+    padding: 12px !important;
+    min-width: unset;
+  }
+}
+@media screen and (min-width: 992px) {
+  #guess-selections {
+    position: absolute;
+    top: 110%;
+    width: 100%;
+  }
+}
+.guess-char-wrapper {
+  background-color: #1f1f1f;
+}
+.guess-char-wrapper .info {
+  display: grid;
+  grid-template-columns: 65px 1fr;
+  gap: 8px;
+}
+.thumbnail {
+  aspect-ratio: 0.7;
+  object-fit: cover;
+  object-position: top center;
+  background: #111111 url(/public/imgs/bg-pattern.png) repeat center center;
+}
+.guess-char-wrapper .element {
+  margin-top: -5px;
+  height: 0.75rem;
+}
+.guess-char-wrapper .appearances {
+  --quantity: 3;
+  display: grid;
+  gap: 4px;
+  grid-template-columns: repeat(var(--quantity), calc((100% - (4px * (var(--quantity) - 1))) / var(--quantity)));
+}
+.guess-char-wrapper .badge {
+  white-space: wrap;
+  font-size: 0.8rem;
+  --bs-badge-border-radius: 1rem;
+}
+.guess-char-wrapper .badge.text-bg-danger {
+  background-color: #c22221 !important;
+}
+.guess-char-wrapper .badge.text-bg-success {
+  color: white !important;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+  background-color: #0da25d !important;
+}
+
+/* src/client/css/index.css */

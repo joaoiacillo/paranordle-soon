@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paranordle - Em Breve!</title>
+
+    <link rel="shortcut icon" href="/icon.png" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap"
+    />
+    <link rel="stylesheet" href="/paranordle.bundle.css" />
+
+    <style>
+      #counter > div {
+        width: 160px;
+        height: 160px;
+        position: relative;
+        margin: 4px;
+        padding-top: 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: url("/public/imgs/counter.png") center center;
+        background-size: cover;
+        color: black;
+        font-size: 80px;
+        user-select: none;
+      }
+
+      #counter > div div {
+        transform: translateY(-9px);
+      }
+
+      #counter span {
+        position: absolute;
+        bottom: 12px;
+        font-size: 16px;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body class="user-select-none">
+    <div class="text-center mt-3">
+      <img src="/logo-light.png" width="200" />
+
+      <div class="d-flex flex-wrap justify-content-center mt-4" id="counter">
+        <div>
+          <div id="hour">00</div>
+          <span>Horas</span>
+        </div>
+        <div>
+          <div id="min">00</div>
+          <span>Minutos</span>
+        </div>
+        <div>
+          <div id="seg">00</div>
+          <span>Segundos</span>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <a
+          class="btn btn-lg btn-outline-light border-0 fs-3"
+          href="https://x.com/paranordle"
+        >
+          <i class="bi bi-twitter-x d-flex"></i>
+        </a>
+        <a
+          class="btn btn-lg btn-outline-light border-0 fs-3"
+          href="https://discord.gg/faUUhGp3FJ"
+        >
+          <i class="bi bi-discord d-flex"></i>
+        </a>
+      </div>
+    </div>
+
+    <script>
+      (() => {
+        const he = document.querySelector("#hour");
+        const me = document.querySelector("#min");
+        const se = document.querySelector("#seg");
+
+        const tick = () => {
+          const release = new Date("2026-01-05 10:00");
+          const now = new Date();
+          const diff = Math.max(release - now);
+
+          const s = Math.max(0, Math.floor(diff / 1000));
+          const m = Math.max(0, Math.floor(s / 60));
+          const h = Math.max(0, Math.floor(m / 60));
+          const d = Math.max(0, Math.floor(h / 24));
+
+          he.textContent = String(h % 24).padStart(2, 0);
+          me.textContent = String(m % 60).padStart(2, 0);
+          se.textContent = String(s % 60).padStart(2, 0);
+
+          setTimeout(tick, 1000);
+        };
+
+        tick();
+      })();
+    </script>
+  </body>
+</html>
